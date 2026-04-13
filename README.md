@@ -158,8 +158,7 @@ Update this README with:
 ---
 
 ## 🚫 AI Usage Policy
-
-- Limited use of AI tools (e.g., for syntax reference or minor help) is acceptable.  
+ 
 - However, generating full solutions using AI (ChatGPT, Claude, Copilot, etc.) is **not allowed**.  
 - Candidates must be able to explain their code during review.
 
