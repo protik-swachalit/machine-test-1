@@ -1,204 +1,87 @@
-# 🧪 Full-Stack (MERN) Machine Test
+Since you are in a **45-minute machine test**, you need to be fast and precise. Below is the updated `README.md` content, specifically tailored to what you have already built (Models, pagination, DB connection). 
 
-## 📌 Overview
-
-This repository contains a **Full-Stack (MERN) Machine Test** designed to evaluate candidates on real-world development skills, including:
-
-* Backend API development (Node.js + Express)
-* Frontend development (React)
-* State management & API integration
-* Database design using MongoDB
-* Code quality and project structure
-* Git workflow and collaboration practices
+I've updated the **API Documentation** to match the search and pagination features you implemented, which actually goes slightly above the basic requirements—great for showing off those MERN skills.
 
 ---
 
-## ⏱ Duration
+##  README Update (Your Submission)
 
-**45 Minutes**
+###  Status: Backend Core Completed
+I have successfully set up the backend architecture, database integration, and the primary Note/User management system.
 
----
+###  Setup Instructions
 
-## 🎯 Objective
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-fork-url>
+    cd <project-folder>/server
+    ```
 
-Build a **Notes Management Application** with full CRUD functionality, search capability, and integration between backend APIs and a React frontend.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
----
+3.  **Environment Configuration:**
+    Create a `.env` file in the `/server` directory:
+    ```env
+    PORT=5000
+    MONGO_URI=your_mongodb_atlas_connection_string
+    ```
 
-## 🧰 Tech Stack
+###  How to Run
 
-* React.js
-* Node.js
-* Express.js
-* MongoDB (**required**)
-* Git & GitHub
+**Backend:**
+```bash
+# From the /server directory
+npm run dev
+```
 
----
-
-## 📂 Project Structure
-
-/client → React application
-/server → Node.js + Express API
-
----
-
-## 🧩 Problem Statement
-
-Build a **Notes Management System** where users can:
-
-* Create notes
-* View all notes
-* Update notes
-* Delete notes
-* Search notes by keyword
+**Frontend:**
+*(Pending implementation)*
 
 ---
 
-## 📌 Data Model
+### 📑 API Documentation
 
-Each note should include:
+The backend is configured with **CORS** and **JSON parsing** middleware. The notes list endpoint is optimized with pagination.
 
-* `title` (string)
-* `content` (string)
-* `createdAt` (auto-generated)
+| Method | Endpoint | Description | Query Parameters |
+| :--- | :--- | :--- | :--- |
+| **POST** | `/api/notes` | Create a new note | `title`, `content`, `userId` |
+| **GET** | `/api/notes` | Get notes with search & pagination | `search`, `page`, `limit` |
+| **PUT** | `/api/notes/:id` | Update an existing note | `title`, `content` |
+| **DELETE**| `/api/notes/:id` | *(In Progress)* | `id` |
 
----
-
-## 🔧 Backend Requirements
-
-* Build REST APIs using Express.js
-* Use **MongoDB (Mongoose preferred)**
-* Implement proper status codes (200, 201, 400, 404)
-* Add basic error handling
+**Example Search/Pagination Request:**
+`GET /api/notes?search=interview&page=1&limit=5`
 
 ---
 
-### 📍 API Endpoints
+###  Progress Checklist
 
-#### Create Note
-
-POST `/api/notes`
-
-#### Get All Notes (with search)
-
-GET `/api/notes?search=keyword`
-
-👉 Should filter notes by `title` or `content`
-
-#### Update Note
-
-PUT `/api/notes/:id`
-
-#### Delete Note
-
-DELETE `/api/notes/:id`
+* [x] **Database:** MongoDB Cluster created and connected via Mongoose.
+* [x] **Models:** * `User`: To track ownership of notes.
+    * `Note`: Stores `title`, `content`, and timestamps.
+* [x] **Backend Config:** Initialized `cors`, `dotenv`, and `express.json`.
+* [x] **Endpoints:** * `POST` (Create)
+    * `GET` (List with query, pagination, and limit)
+    * `PUT` (Update)
 
 ---
 
-## 🎨 Frontend Requirements
+###  Pull Request Details
 
-* Use React functional components
-* Use hooks (`useState`, `useEffect`)
-* Integrate with backend APIs
+#### Summary of Solution
+I have implemented a structured MERN backend. Instead of a basic array-fetch, I implemented **Pagination and Query filtering** on the `GET` endpoint to ensure the application remains performant as the database grows.
 
----
+#### Features Implemented
+* Relational Data Modeling (User <-> Notes).
+* Advanced List Filtering (Search + Pagination).
+* Secure Environment Variable management.
+* Express server with standard middleware (CORS, Body-parser).
 
-### UI Features:
-
-* Display all notes
-* Add a new note
-* Edit/update a note
-* Delete a note
-* Search notes using input field
-
----
-
-## 🌿 Git Workflow (Mandatory)
-
-Follow these steps carefully:
-
-1. Fork this repository
-
-2. Create a new branch:
-   feature/your-name
-
-3. Make meaningful commits:
-
-   * feat: initial setup
-   * feat: backend APIs
-   * feat: frontend UI
-   * feat: search implementation
-   * fix: improvements
-
-4. Push your branch
-
-5. Create a Pull Request (PR)
-
----
-
-## 📄 Pull Request Guidelines
-
-Your PR must include:
-
-* Summary of your solution
-* Features implemented
-* Any assumptions or limitations
-
----
-
-## 📘 README Update (Required)
-
-Update this README with:
-
-* Setup instructions
-* How to run backend & frontend
-* API documentation
-* Screenshots (optional)
-
----
-
-## 🚫 AI Usage Policy
- 
-- However, generating full solutions using AI (ChatGPT, Claude, Copilot, etc.) is **not allowed**.  
-- Candidates must be able to explain their code during review.
-
----
-
-## ⭐ Bonus (Optional but Valuable)
-
-* Implement **debouncing in search input** (React)
-* Add input validation (no empty fields)
-* Show loading states
-* Improve UI/UX
-* Use environment variables (`.env`)
-
----
-
-## ❌ Disqualification Criteria
-
-* Application not running
-* MongoDB not used
-* No proper Git commits
-* Plagiarized code without understanding
-
----
-
-## 🧠 Tips
-
-* Focus on a working solution first
-* Keep your code simple and clean
-* Manage your time effectively
-* Avoid over-engineering
-
----
-
-## 📬 Submission
-
-Submit your work by creating a **Pull Request (PR)** to this repository.
-
----
-
-## 🚀 Good Luck!
-
-We’re excited to see your approach and problem-solving skills.
-Happy Coding! 🎯
+#### Assumptions or Limitations
+* **Assumption:** The `userId` is currently passed in the jwt/cookie header for note creation.
+* **Limitation:** Delete functionality and Frontend integration are the next priority items.
+* **Limitation:** Authentication (JWT) is not implemented as per the 45-min test scope; using a raw `User` model for tracking instead.
